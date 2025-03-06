@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Business</title>
+    <style>
+        /* Reset default margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body and general typography */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: black;
+            color: white;
+            position: relative; /* Ensure the star is positioned relative to the body */
+            overflow-y: auto; /* Allow vertical scrolling */
+        }
+
+        /* Snowflake styles */
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: white;
+            font-size: 1em;
+            pointer-events: none;
+            opacity: 1;
+            z-index: 1000; /* Ensure snowflakes are above other content */
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(calc(100vh + 900px));
+            }
+        }
+
+        /* Add different animations for different snowflakes */
+        .snowflake:nth-of-type(1) {
+            left: 5%;
+            animation-duration: 5s;
+            animation-delay: 0s;
+        }
+
+        .snowflake:nth-of-type(2) {
+            left: 20%;
+            animation-duration: 7s;
+            animation-delay: 1s;
+        }
+
+        .snowflake:nth-of-type(3) {
+            left: 30%;
+            animation-duration: 6s;
+            animation-delay: 2s;
+        }
+
+        .snowflake:nth-of-type(4) {
+            left: 40%;
+            animation-duration: 4s;
+            animation-delay: 3s;
+        }
+
+        .snowflake:nth-of-type(5) {
+            left: 50%;
+            animation-duration: 8s;
+            animation-delay: 4s;
+        }
+
+        .snowflake:nth-of-type(6) {
+            left: 60%;
+            animation-duration: 6s;
+            animation-delay: 5s;
+        }
+
+        .snowflake:nth-of-type(7) {
+            left: 70%;
+            animation-duration: 5s;
+            animation-delay: 2s;
+        }
+
+        .snowflake:nth-of-type(8) {
+            left: 80%;
+            animation-duration: 7s;
+            animation-delay: 1s;
+        }
+
+        .snowflake:nth-of-type(9) {
+            left: 90%;
+            animation-duration: 6s;
+            animation-delay: 3s;
+        }
+
+        .snowflake:nth-of-type(10) {
+            left: 15%;
+            animation-duration: 8s;
+            animation-delay: 4s;
+        }
+
+        /* Header */
+        header {
+            background-color: #333;
+            color: gold;
+            padding: 15px 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #444;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1em;
+        }
+
+        /* Main content */
+        main {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 20px auto;
+            position: relative;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .intro h2 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #ff007f, #ff7f00, #7fff00, #00ff7f, #007fff, #7f00ff, #ff00ff, #ff007f);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: rainbow 5s linear infinite;
+        }
+
+        .intro p {
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        @keyframes rainbow {
+            0% {
+                background-position: -100% 0;
+            }
+            100% {
+                background-position: 100% 0;
+            }
+        }
+
+        /* Section Styles */
+        section {
+            margin-bottom: 30px;
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .product {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .product-info {
+            padding: 15px;
+            text-align: center;
+            position: relative;
+        }
+
+        .product-info h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .product-info p {
+            font-size: 1.1em;
+            color: #777;
+        }
+
+        .product-info .price {
+            font-size: 1.3em;
+            color: #333;
+            margin-top: 10px;
+        }
+
+        .product-info button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .product-info button:hover {
+            background-color: #0056b3;
+            transform: scale(1.1);
+        }
+
+        /* Glitter effect */
+        .product-info button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0) 20%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .product-info button:active::before {
+            opacity: 1;
+            animation: glitter 0.6s ease-out;
+        }
+
+        @keyframes glitter {
+            0% {
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1.5);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(0);
+                opacity: 0;
+            }
+        }
+
+        /* Float sections to the right */
+        .right-section {
+            float: right;
+            width: 40%;
+            margin-left: 20px;
+        }
+
+        .left-section {
+            float: left;
+            width: 55%;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: goldenrod;
+            padding: 10px;
+            text-align: center;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Star animation */
+        .star {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: url('https://www.pngitem.com/pimgs/m/209-2098682_star-png-transparent-background-star-png-image.png') no-repeat center center;
+            background-size: contain;
+            animation: moveStar 15s infinite linear;
+            z-index: 10;
+        }
+
+        @keyframes moveStar {
+            0% {
+                top: 10%;
+                left: 10%;
+                transform: rotate(0deg);
+            }
+            25% {
+                top: 10%;
+                left: 80%;
+                transform: rotate(90deg);
+            }
+            50% {
+                top: 80%;
+                left: 80%;
+                transform: rotate(180deg);
+            }
+            75% {
+                top: 80%;
+                left: 10%;
+                transform: rotate(270deg);
+            }
+            100% {
+                top: 10%;
+                left: 10%;
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            .right-section, .left-section {
+                float: none;
+                width: 100%;
+                margin: 0;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Tech Business</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="https://www.youtube.com/">Home</a></li>
+            <li><a href="https://www.w3schools.com//">Products</a></li>
+            <li><a href="https://www.aws.amazon.com/">About Us</a></li>
+            <li><a href="https://www.azure.microsoft.com/">Contact</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section class="intro">
+            <h2>Welcome to Tech Business!</h2>
+            <p>Discover our range of innovative tech products and services. Stay ahead with the latest technology trends.</p>
+        </section>
+        
+        <div class="left-section">
+            <section>
+                <h3>Our Products</h3>
+                <div class="product-grid">
+                    <div class="product">
+                        <img src="headphones.jpg" alt="Product 1">
+                        <div class="product-info">
+                            <h3>Product 1</h3>
+                            <p>High-quality tech gadget for everyday use.</p>
+                            <div class="price">$299.99</div>
+                            <button>Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <img src="stylus.png" alt="Product 2">
+                        <div class="product-info">
+                            <h3>Product 2</h3>
+                            <p>Innovative solution to boost your productivity.</p>
+                            <div class="price">$499.99</div>
+                            <button>Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <img src="mouse.jpg" alt="Product 3">
+                        <div class="product-info">
+                            <h3>Product 3</h3>
+                            <p>Compact and efficient tech tool.</p>
+                            <div class="price">$199.99</div>
+                            <button>Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <img src="drone.jpg" alt="Product 4">
+                        <div class="product-info">
+                            <h3>Product 4</h3>
+                            <p>Advanced gadget to make your life easier.</p>
+                            <div class="price">$399.99</div>
+                            <button>Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <h3>Services</h3>
+                <ul>
+                    <li>Consulting</li>
+                    <li>Software Development</li>
+                    <li>Technical Support</li>
+                    <li>Training and Workshops</li>
+                </ul>
+            </section>
+            <section>
+                <h3>Our Team</h3>
+                <table border="1">
+                    <tr>
+                        <th>Name</th>
+                        <th>Position</th>
+                        <th>Email</th>
+                    </tr>
+                    <tr>
+                        <td>John Doe</td>
+                        <td>CEO</td>
+                        <td>john@example.com</td>
+                    </tr>
+                    <tr>
+                        <td>Jane Smith</td>
+                        <td>CTO</td>
+                        <td>jane@example.com</td>
+                    </tr>
+                    <tr>
+                        <td>Mike Brown</td>
+                        <td>Lead Developer</td>
+                        <td>mike@example.com</td>
+                    </tr>
+                </table>
+            </section>
+        </div>
+        <div class="right-section">
+            <section>
+                <h3>Watch Our Latest Video</h3>
+                <video controls>
+                    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </section>
+            <section>
+                <h3>Image Gallery</h3>
+                <figure>
+                    <img src="robot.jpg" alt="Tech Image 1">
+                    <figcaption>Innovative Tech Gadget</figcaption>
+                </figure>
+                <figure>
+                    <img src="ar-vr.jpg" alt="Tech Image 2">
+                    <figcaption>Modern Workspace</figcaption>
+                </figure>
+            </section>
+        </div>
+        <div class="clear"></div>
+        <section>
+            <h3>Contact Us</h3>
+            <p>For more information, visit our website:</p>
+            <p><a href="https://www.example.com">Tech Business Website</a></p>
+            <p>Follow us on social media:</p>
+            <ul>
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Twitter</a></li>
+                <li><a href="#">LinkedIn</a></li>
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Tech Business. All rights reserved.</p>
+    </footer>
+
+    <!-- Snowflakes -->
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    
+</body>
+</html>
